@@ -1,0 +1,25 @@
+{
+  "name": "vue-modelvis",
+  "version": "0.0.1",
+  "description": "A library of Vue components for model visualisation and exploration",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reside-ic/vue-modelvis.git"
+  },
+  "keywords": [
+    "Vue",
+    "visualisation"
+  ],
+  "author": "reside-ic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reside-ic/vue-modelvis/issues"
+  },
+  "homepage": "https://github.com/reside-ic/vue-modelvis#readme",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}
