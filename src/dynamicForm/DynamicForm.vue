@@ -20,7 +20,7 @@
     import {BForm} from "bootstrap-vue";
     import DynamicFormControlGroup from "./DynamicFormControlGroup.vue";
     import DynamicFormControlSection from "./DynamicFormControlSection.vue";
-    import {Control, DynamicControl, DynamicControlSection, DynamicFormData, DynamicFormMeta} from "./types";
+    import {Control, DynamicControl, DynamicControlSection, DynamicFormData, DynamicFormMeta} from "./index";
 
     interface Props {
         formMeta: DynamicFormMeta,

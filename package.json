@@ -4,13 +4,13 @@
   "description": "A library of Vue components for model visualisation and exploration",
   "scripts": {
     "test": "jest -c jest.config.js",
-    "build": "gulp build",
-    "webpack": "gulp webpack",
     "sass": "gulp sass"
   },
+  "main": "./src/index.js",
   "files": [
     "/dist"
   ],
+  "types": "./src/index.d.ts",
   "directories": {
     "test": "test"
   },

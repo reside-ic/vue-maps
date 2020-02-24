@@ -7,7 +7,7 @@ import {
     NumberControl,
     Option,
     SelectControl
-} from "./types";
+} from "./index";
 
 export function isControl(object: any): Boolean {
     return (object.helpText == undefined || typeof object.helpText == "string")

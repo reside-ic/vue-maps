@@ -16,12 +16,10 @@
 <script lang="ts">
     import Vue from "vue";
     import {BCol, BRow} from "bootstrap-vue";
-    import {Control, DynamicControlGroup} from "./types";
+    import {Control, DynamicControlGroup} from "./index";
     import DynamicFormControl from "./DynamicFormControl.vue";
     import {VTooltip} from 'v-tooltip';
     import {HelpCircleIcon} from "vue-feather-icons";
-
-    Vue.directive('tooltip', VTooltip);
 
     interface Methods {
         change: (newVal: Control, index: number) => void
@@ -51,6 +49,9 @@
             BCol,
             DynamicFormControl,
             HelpCircleIcon
+        },
+        directives: {
+            VTooltip
         },
         methods: {
             change(newVal: Control, index: number) {

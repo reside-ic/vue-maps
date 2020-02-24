@@ -18,12 +18,10 @@
     import {BCol} from "bootstrap-vue";
     import DynamicFormMultiSelect from "./DynamicFormMultiSelect.vue";
     import DynamicFormSelect from "./DynamicFormSelect.vue";
-    import {DynamicControl} from "./types";
+    import {DynamicControl} from "./index";
     import DynamicFormNumberInput from "./DynamicFormNumberInput.vue";
     import {VTooltip} from 'v-tooltip'
     import {HelpCircleIcon} from "vue-feather-icons";
-
-    Vue.directive('tooltip', VTooltip);
 
     interface Computed {
         dynamicComponent: string,
@@ -72,5 +70,8 @@
             DynamicFormMultiSelect,
             HelpCircleIcon
         },
+        directives: {
+            VTooltip
+        }
     });
 </script>

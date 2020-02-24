@@ -1,11 +1,14 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    output: {filename: '[name].js', path: path.resolve(__dirname, 'dist')},
+    entry: "./src/index.js",
+    output: {
+        filename: 'js/index.js',
+        libraryTarget: 'umd',
+        library: 'vue-modelvis',
+        umdNamedDefine: true
+    },
     module: {
         rules: [
             {
@@ -33,14 +36,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            minimize: true
-        }),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        })
+        new VueLoaderPlugin()
     ]
 };

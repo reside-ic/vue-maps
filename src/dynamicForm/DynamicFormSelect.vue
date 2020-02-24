@@ -15,7 +15,7 @@
 <script lang="ts">
     import Vue from "vue";
     import {BFormSelect} from "bootstrap-vue";
-    import {SelectControl} from "./types";
+    import {SelectControl} from "./index";
 
     interface Props {
         formControl: SelectControl

@@ -10,7 +10,7 @@
 
 <script lang="ts">
     import Vue from "vue";
-    import {MultiSelectControl} from "./types";
+    import {MultiSelectControl} from "./index";
     import TreeSelect from '@riophae/vue-treeselect';
 
     interface Props {

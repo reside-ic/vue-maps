@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./built/",
+    "outDir": ".",
     "sourceMap": true,
     "strict": true,
     "noImplicitReturns": true,
@@ -12,8 +12,7 @@
   },
   "include": [
     "./**/*.ts",
-    "./**/*.vue",
-    "./test/**/*.test.ts"
+    "./**/*.vue"
   ],
   "files": [
     "./vue-shims.d.ts"

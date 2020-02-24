@@ -13,7 +13,7 @@
 
     import Vue from "vue";
     import DynamicFormControlGroup from "./DynamicFormControlGroup.vue";
-    import {DynamicControlGroup, DynamicControlSection} from "./types";
+    import {DynamicControlGroup, DynamicControlSection} from "./index";
 
     interface Methods {
         change: (newVal: DynamicControlGroup, index: number) => void
