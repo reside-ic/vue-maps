@@ -5,7 +5,7 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     minify = require('gulp-clean-css'),
     through = require('through'),
-    path = require('path')
+    path = require('path');
 
 sass.compiler = require('node-sass');
 

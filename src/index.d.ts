@@ -1,26 +1,7 @@
 declare module 'vue-modelvis' {
     import Vue from 'vue';
 
-    class DynamicForm extends Vue {
-    }
-
-    class DynamicFormControlSection extends Vue {
-    }
-
-    class DynamicFormControlGroup extends Vue {
-    }
-
-    class DynamicFormControl extends Vue {
-    }
-
-    class DynamicFormSelect extends Vue {
-    }
-
-    class DynamicFormMultiSelect extends Vue {
-    }
-
-    class DynamicFormNumberInput extends Vue {
-    }
+    export class DynamicForm extends Vue {}
 
     type Dict<V> = { [k: string]: V }
 
@@ -75,15 +56,4 @@ declare module 'vue-modelvis' {
 
     type DynamicFormData = Dict<string | string[] | number | null>
 
-    export {
-        DynamicForm,
-        DynamicFormControlSection,
-        DynamicFormControlGroup,
-        DynamicFormControl,
-        DynamicFormSelect,
-        DynamicFormNumberInput,
-        DynamicFormMultiSelect,
-        DynamicFormData,
-        DynamicFormMeta
-    }
 }

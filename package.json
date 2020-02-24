@@ -6,7 +6,7 @@
     "test": "jest -c jest.config.js",
     "sass": "gulp sass"
   },
-  "main": "./src/index.js",
+  "main": "./dist/js/index.js",
   "files": [
     "/dist"
   ],

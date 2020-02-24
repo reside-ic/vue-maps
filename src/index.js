@@ -1,3 +1,4 @@
+import DynamicForm from './dynamicForm/DynamicForm.vue'
 import DynamicFormControlSection from './dynamicForm/DynamicFormControlSection.vue'
 import DynamicFormControlGroup from './dynamicForm/DynamicFormControlGroup.vue'
 import DynamicFormControl from './dynamicForm/DynamicFormControl.vue'
@@ -15,8 +16,8 @@ import {
     isSelectOption
 } from './dynamicForm/dynamicFormChecker.ts'
 
-export { default as DynamicForm } from './dynamicForm/DynamicForm.vue'
 export {
+    DynamicForm,
     DynamicFormControlSection,
     DynamicFormControlGroup,
     DynamicFormControl,

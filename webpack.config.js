@@ -1,13 +1,18 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    mode: 'production',
     entry: "./src/index.js",
     output: {
         filename: 'js/index.js',
         libraryTarget: 'umd',
-        library: 'vue-modelvis',
-        umdNamedDefine: true
+        library: 'vue-modelvis'
+    },
+    resolve: {
+        extensions: ['.ts', '.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
     module: {
         rules: [
