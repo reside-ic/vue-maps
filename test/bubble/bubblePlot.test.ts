@@ -15,10 +15,14 @@ const localVue = createLocalVue();
 
 const propsData = {
     ...testData,
-    selections: {
+    labels: {
         filtersLabel: "Filters",
         colorIndicatorLabel: "Colour Indicator",
         sizeIndicatorLabel: "Size Indicator",
+        mapIndicatorLabel: "Indicator",
+        detailLabel: "Detail"
+    },
+    selections: {
         colorIndicatorId: "prevalence",
         sizeIndicatorId: "plhiv",
         detail: 4,
@@ -121,6 +125,17 @@ describe("BubblePlot component", () => {
         expect(sizeLegend.props().indicatorRange).toStrictEqual({min: 1, max: 20});
         expect(sizeLegend.props().minRadius).toBe(10);
         expect(sizeLegend.props().maxRadius).toBe(70);
+    });
+
+    it ("renders labels", () => {
+        const wrapper = getWrapper();
+        expect(wrapper.find('#color-indicator label').text()).toBe("Colour Indicator");
+        expect(wrapper.find('#size-indicator label').text()).toBe("Size Indicator");
+        expect(wrapper.find('h4').text()).toBe("Filters");
+
+        const mapControl = wrapper.find(MapControl);
+        expect(mapControl.props().indicatorLabel).toBe("Indicator");
+        expect(mapControl.props().detailLabel).toBe("Detail");
     });
 
     it("computes indicatorRanges", () => {

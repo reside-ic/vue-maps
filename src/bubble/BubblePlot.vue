@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3">
             <div id="color-indicator" class="form-group">
-                <label class="font-weight-bold">{{colorIndicatorLabel}}</label>
+                <label class="font-weight-bold">{{labels.colorIndicatorLabel}}</label>
                 <treeselect :multiple=false
                             :clearable="false"
                             :options="indicators"
@@ -12,7 +12,7 @@
                 </treeselect>
             </div>
             <div id="size-indicator" class="form-group">
-                <label class="font-weight-bold">{{sizeIndicatorLabel}}</label>
+                <label class="font-weight-bold">{{labels.sizeIndicatorLabel}}</label>
                 <treeselect :multiple=false
                             :clearable="false"
                             :options="indicators"
@@ -21,7 +21,7 @@
                             @input="onSizeIndicatorSelect($event)">
                 </treeselect>
             </div>
-            <h4>{{filtersLabel}}</h4>
+            <h4>{{labels.filtersLabel}}</h4>
             <div id="area-filter" class="form-group">
                 <filter-select :label="areaFilter.label"
                                :multiple="true"
@@ -57,6 +57,8 @@
                 <map-control :initialDetail=selections.detail
                              :show-indicators="false"
                              :level-labels="featureLevels"
+                             :indicator-label="labels.mapIndicatorLabel"
+                             :detail-label="labels.detailLabel"
                              @detail-changed="onDetailChange"></map-control>
                 <map-legend :metadata="colorIndicator"></map-legend>
                 <size-legend :indicatorRange="sizeRange" :max-radius="maxRadius" :min-radius="minRadius"></size-legend>
@@ -78,14 +80,12 @@
     import {toIndicatorNameLookup, getIndicatorRanges, flattenOptions, flattenToIdSet} from "../utils";
     import {ChoroplethIndicatorMetadata, FilterOption, NestedFilterOption,
         Dict, Filter, LevelLabel, NumericRange} from "../types";
-    import {BubblePlotSelections, BubbleIndicatorValuesDict,} from "./types";
+    import {BubblePlotSelections, BubbleIndicatorValuesDict, BubblePlotLabels,} from "./types";
     import SizeLegend from "./SizeLegend.vue";
 
 
     interface Props {
-        filtersLabel: string,
-        colorIndicatorLabel: string,
-        sizeIndicatorLabel: string,
+        labels: BubblePlotLabels,
         features: Feature[],
         featureLevels: LevelLabel[]
         indicators: ChoroplethIndicatorMetadata[],
@@ -138,14 +138,8 @@
     }
 
     const props = {
-        filtersLabel: {
-            type: String
-        },
-        colorIndicatorLabel: {
-            type: String
-        },
-        sizeIndicatorLabel: {
-            type: String
+        labels: {
+            type: Object
         },
         features: {
             type: Array

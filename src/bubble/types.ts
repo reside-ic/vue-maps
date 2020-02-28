@@ -1,5 +1,13 @@
 import {Dict, FilterOption, IndicatorValues} from "../types";
 
+export interface BubblePlotLabels {
+    filtersLabel: string,
+    colorIndicatorLabel: string,
+    sizeIndicatorLabel: string,
+    mapIndicatorLabel: string,
+    detailLabel: string
+}
+
 export interface BubbleIndicatorValues extends IndicatorValues {
     radius: number;
 }
