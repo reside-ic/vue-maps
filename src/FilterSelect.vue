@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label :class="'font-weight-bold' + (disabled ? ' disabled-label' : '')" v-translate="label"></label>
+        <label :class="'font-weight-bold' + (disabled ? ' disabled-label' : '')">{{label}}</label>
         <treeselect id="survey-filters" :multiple=multiple
                     :clearable="false"
                     :options=options
@@ -14,14 +14,10 @@
 </template>
 
 <script lang="ts">
-    import i18next from "i18next";
     import Vue from "vue";
     import Treeselect from '@riophae/vue-treeselect';
-    import {mapStateProp} from "../../utils";
-    import {RootState} from "../../root";
-    import {Language} from "../../store/translations/locales";
-    import {FilterOption} from "../../generated";
-    import {flattenOptions} from "../../utils";
+    import {FilterOption} from "./types";
+    import {flattenOptions} from "./utils";
 
     interface Methods {
         input: (value: string[]) => void
@@ -31,7 +27,6 @@
 
     interface Computed {
         treeselectValue: string[] | string | null
-        currentLanguage: Language
         placeholder: string
     }
 
@@ -40,7 +35,9 @@
         label: string,
         disabled: boolean,
         options: any[],
-        value: string[] | string
+        value: string[] | string,
+        notUsedPlaceholder: string,
+        selectPlaceholder: string
     }
 
     interface Data {
@@ -54,7 +51,9 @@
             label: String,
             disabled: Boolean,
             options: Array,
-            value: [Array, String]
+            value: [Array, String],
+            notUsedPlaceholder: String,
+            selectPlaceholder: String
         },
         data() {
             const idArray =  Array.isArray(this.value) ? this.value : [this.value];
@@ -68,11 +67,8 @@
             treeselectValue() {
                 return this.disabled ? null : this.value;
             },
-            currentLanguage: mapStateProp<RootState, Language>(null,
-                (state: RootState) => state.language),
             placeholder() {
-                const key = this.disabled ? "notUsed" : "select";
-                return i18next.t(key, this.currentLanguage)
+                return this.disabled ? this.notUsedPlaceholder: this.selectPlaceholder;
             }
         },
         methods: {

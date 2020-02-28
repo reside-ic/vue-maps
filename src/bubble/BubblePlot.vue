@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3">
             <div id="color-indicator" class="form-group">
-                <label class="font-weight-bold" v-translate="'colorIndicator'"></label>
+                <label class="font-weight-bold">{{colorIndicatorLabel}}</label>
                 <treeselect :multiple=false
                             :clearable="false"
                             :options="indicators"
@@ -12,7 +12,7 @@
                 </treeselect>
             </div>
             <div id="size-indicator" class="form-group">
-                <label class="font-weight-bold" v-translate="'sizeIndicator'"></label>
+                <label class="font-weight-bold">{{sizeIndicatorLabel}}</label>
                 <treeselect :multiple=false
                             :clearable="false"
                             :options="indicators"
@@ -21,7 +21,7 @@
                             @input="onSizeIndicatorSelect($event)">
                 </treeselect>
             </div>
-            <h4 v-translate="'filters'"></h4>
+            <h4>{{filtersLabel}}</h4>
             <div id="area-filter" class="form-group">
                 <filter-select :label="areaFilter.label"
                                :multiple="true"
@@ -74,16 +74,18 @@
     import MapLegend from "../MapLegend.vue";
     import FilterSelect from "../FilterSelect.vue";
     import {GeoJSON} from "leaflet";
-    import {ChoroplethIndicatorMetadata, FilterOption, NestedFilterOption} from "../../../generated";
-    import {BubblePlotSelections} from "../../../store/plottingSelections/plottingSelections";
     import {getFeatureIndicators} from "./utils";
-    import {toIndicatorNameLookup, getIndicatorRanges} from "../utils";
-    import {BubbleIndicatorValuesDict, Dict, Filter, LevelLabel, NumericRange} from "../../../types";
-    import {flattenOptions, flattenToIdSet} from "../../../utils";
+    import {toIndicatorNameLookup, getIndicatorRanges, flattenOptions, flattenToIdSet} from "../utils";
+    import {ChoroplethIndicatorMetadata, FilterOption, NestedFilterOption,
+        Dict, Filter, LevelLabel, NumericRange} from "../types";
+    import {BubblePlotSelections, BubbleIndicatorValuesDict,} from "./types";
     import SizeLegend from "./SizeLegend.vue";
 
 
     interface Props {
+        filtersLabel: string,
+        colorIndicatorLabel: string,
+        sizeIndicatorLabel: string,
         features: Feature[],
         featureLevels: LevelLabel[]
         indicators: ChoroplethIndicatorMetadata[],
@@ -136,6 +138,15 @@
     }
 
     const props = {
+        filtersLabel: {
+            type: String
+        },
+        colorIndicatorLabel: {
+            type: String
+        },
+        sizeIndicatorLabel: {
+            type: String
+        },
         features: {
             type: Array
         },

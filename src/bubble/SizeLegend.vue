@@ -15,7 +15,7 @@
     import Vue from "vue";
     import {LControl} from "vue2-leaflet";
     import {getRadius} from "./utils";
-    import {NumericRange} from "../../../types";
+    import {NumericRange} from "../types";
 
     interface Circle {
         y: number,

@@ -3,8 +3,7 @@
         <div style="width: 265px;" class="p-3 map-control">
             <form>
                 <div v-if="showIndicators" class="row form-group">
-                    <label class="col-3 col-form-label" v-translate="'indicator'">
-                    </label>
+                    <label class="col-3 col-form-label">{{indicatorLabel}}</label>
                     <div class="col">
                         <tree-select :value="indicator"
                                      :multiple="false"
@@ -15,8 +14,7 @@
                     </div>
                 </div>
                 <div class="row form-group">
-                    <label class="col-3 col-form-label" v-translate="'detail'">
-                    </label>
+                    <label class="col-3 col-form-label">{{detailLabel}}</label>
                     <div class="col">
                         <tree-select v-model="detail"
                                      :multiple="false"
@@ -35,8 +33,7 @@
     import Vue from "vue";
     import TreeSelect from '@riophae/vue-treeselect'
     import {LControl} from 'vue2-leaflet';
-    import {ChoroplethIndicatorMetadata} from "../../generated";
-    import {LevelLabel} from "../../types";
+    import {LevelLabel, ChoroplethIndicatorMetadata} from "./types";
 
     interface Data {
         detail: any;
@@ -44,6 +41,8 @@
     }
 
     interface Props {
+        indicatorLabel: string,
+        detailLabel: string,
         indicator: string,
         initialDetail: number,
         showIndicators: boolean,
@@ -72,6 +71,8 @@
             LControl
         },
         props: {
+            indicatorLabel: String,
+            detailLabel: String,
             indicator: String,
             initialDetail: Number,
             showIndicators: Boolean,
