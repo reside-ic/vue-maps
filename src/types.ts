@@ -30,8 +30,7 @@ export interface LevelLabel {
     display: boolean;
 }
 
-//TODO: Rename this IndicatorMetadata
-export interface ChoroplethIndicatorMetadata {
+export interface IndicatorMetadata {
     indicator: string;
     value_column: string;
     indicator_column?: string;

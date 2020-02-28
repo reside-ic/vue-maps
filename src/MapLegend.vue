@@ -15,11 +15,11 @@
     import {LControl} from 'vue2-leaflet';
     import {roundToContext} from "./utils";
     import {colorFunctionFromName} from "./utils";
-    import {ChoroplethIndicatorMetadata, NumericRange} from "./types";
+    import {IndicatorMetadata, NumericRange} from "./types";
     let numeral = require('numeral');
 
     interface Props {
-        metadata: ChoroplethIndicatorMetadata,
+        metadata: IndicatorMetadata,
         range: NumericRange
     }
 

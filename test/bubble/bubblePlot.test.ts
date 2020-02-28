@@ -434,7 +434,7 @@ describe("BubblePlot component", () => {
         const vm = wrapper.vm as any;
         vm.updateBounds = mockUpdateBounds;
 
-        wrapper.setProps(propsData); //This should initialise and trigger the watcher
+        wrapper.setProps({...propsData, labels: {...propsData.labels}}); //Fresh object should initialise and trigger the watcher
         await Vue.nextTick();
         expect(mockUpdateBounds.mock.calls.length).toBeGreaterThan(0);
     });

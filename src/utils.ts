@@ -1,7 +1,7 @@
 import * as d3ScaleChromatic from "d3-scale-chromatic";
-import {ChoroplethIndicatorMetadata, FilterOption, Dict, Filter, NumericRange, NestedFilterOption} from "./types";
+import {IndicatorMetadata, FilterOption, Dict, Filter, NumericRange, NestedFilterOption} from "./types";
 
-export const getColor = (value: number, metadata: ChoroplethIndicatorMetadata,
+export const getColor = (value: number, metadata: IndicatorMetadata,
                          customMin: number | null = null, customMax: number | null = null) => {
 
     const min = customMin === null ? metadata.min : customMin;
@@ -33,10 +33,10 @@ export const colorFunctionFromName = function (name: string) {
 };
 
 export const getIndicatorRanges = function(data: any,
-                                           indicatorsMeta: ChoroplethIndicatorMetadata[]): Dict<NumericRange>{
+                                           indicatorsMeta: IndicatorMetadata[]): Dict<NumericRange>{
     const result = {} as Dict<NumericRange>;
     iterateDataValues(data, indicatorsMeta, null, null, null,
-        (areaId: string, indicatorMeta: ChoroplethIndicatorMetadata, value: number) => {
+        (areaId: string, indicatorMeta: IndicatorMetadata, value: number) => {
             const indicator = indicatorMeta.indicator;
             if (!result[indicator]) {
                 result[indicator] = {min: value, max: value};
@@ -51,12 +51,12 @@ export const getIndicatorRanges = function(data: any,
 
 export const iterateDataValues = function(
     data: any,
-    indicatorsMeta: ChoroplethIndicatorMetadata[],
+    indicatorsMeta: IndicatorMetadata[],
     selectedAreaIds: string[] | null,
     filters: Filter[] | null,
     selectedFilterValues: Dict<FilterOption[]> | null,
     func: (areaId: string,
-           indicatorMeta: ChoroplethIndicatorMetadata, value: number) => void) {
+           indicatorMeta: IndicatorMetadata, value: number) => void) {
 
     for (const row of data) {
         if (filters && selectedFilterValues && excludeRow(row, filters, selectedFilterValues)) {
@@ -103,7 +103,7 @@ const excludeRow = function(row: any, filters: Filter[], selectedFilterValues: D
     return excludeRow;
 };
 
-export const toIndicatorNameLookup = (array: ChoroplethIndicatorMetadata[]) =>
+export const toIndicatorNameLookup = (array: IndicatorMetadata[]) =>
     array.reduce((obj, current) => {
         obj[current.indicator] = current.name;
         return obj

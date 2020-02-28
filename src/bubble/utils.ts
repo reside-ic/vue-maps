@@ -1,5 +1,5 @@
 import {BubbleIndicatorValuesDict } from "./types";
-import {ChoroplethIndicatorMetadata, FilterOption,Dict, Filter, NumericRange} from "../types";
+import {IndicatorMetadata, FilterOption,Dict, Filter, NumericRange} from "../types";
 import {getColor, iterateDataValues} from "../utils";
 
 
@@ -12,7 +12,7 @@ export const getRadius = function(value: number, minValue: number, maxValue: num
 
 export const getFeatureIndicators = function (data: any[],
                                               selectedAreaIds: string[],
-                                              indicatorsMeta: ChoroplethIndicatorMetadata[],
+                                              indicatorsMeta: IndicatorMetadata[],
                                               indicatorRanges: Dict<NumericRange>,
                                               filters: Filter[],
                                               selectedFilterValues: Dict<FilterOption[]>,
@@ -22,7 +22,7 @@ export const getFeatureIndicators = function (data: any[],
 
     const result = {} as Dict<BubbleIndicatorValuesDict>;
     iterateDataValues(data, indicatorsMeta, selectedAreaIds, filters, selectedFilterValues,
-        (areaId: string, indicatorMeta: ChoroplethIndicatorMetadata, value: number) => {
+        (areaId: string, indicatorMeta: IndicatorMetadata, value: number) => {
             if (!result[areaId]) {
                 result[areaId] = {} as BubbleIndicatorValuesDict;
             }

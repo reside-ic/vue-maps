@@ -78,7 +78,7 @@
     import {GeoJSON} from "leaflet";
     import {getFeatureIndicators} from "./utils";
     import {toIndicatorNameLookup, getIndicatorRanges, flattenOptions, flattenToIdSet} from "../utils";
-    import {ChoroplethIndicatorMetadata, FilterOption, NestedFilterOption,
+    import {IndicatorMetadata, FilterOption, NestedFilterOption,
         Dict, Filter, LevelLabel, NumericRange} from "../types";
     import {BubblePlotSelections, BubbleIndicatorValuesDict, BubblePlotLabels,} from "./types";
     import SizeLegend from "./SizeLegend.vue";
@@ -88,7 +88,7 @@
         labels: BubblePlotLabels,
         features: Feature[],
         featureLevels: LevelLabel[]
-        indicators: ChoroplethIndicatorMetadata[],
+        indicators: IndicatorMetadata[],
         chartdata: any[],
         filters: Filter[],
         selections: BubblePlotSelections,
@@ -114,7 +114,7 @@
         onSizeIndicatorSelect: (newValue: string) => void,
         changeSelections: (newSelections: Partial<BubblePlotSelections>) => void,
         getFeatureFromAreaId: (id: string) => Feature,
-        normalizeIndicators: (node: ChoroplethIndicatorMetadata) => any
+        normalizeIndicators: (node: IndicatorMetadata) => any
     }
 
     interface Computed {
@@ -133,7 +133,7 @@
         selectedAreaFeatures: Feature[],
         countryFilterOption: FilterOption,
         countryFeature: Feature | null,
-        colorIndicator: ChoroplethIndicatorMetadata,
+        colorIndicator: IndicatorMetadata,
         sizeRange: NumericRange
     }
 
@@ -271,7 +271,7 @@
             countryFeature(): Feature | null {
                 return this.countryFilterOption ? this.getFeatureFromAreaId(this.countryFilterOption.id)!! : null;
             },
-            colorIndicator(): ChoroplethIndicatorMetadata {
+            colorIndicator(): IndicatorMetadata {
                 return this.indicators.find(i => i.indicator == this.selections.colorIndicatorId)!!;
             },
             sizeRange(): NumericRange {
@@ -340,7 +340,7 @@
             getFeatureFromAreaId(areaId: string): Feature {
                 return this.features.find((f: Feature) => f.properties!!.area_id == areaId)!!;
             },
-            normalizeIndicators(node: ChoroplethIndicatorMetadata) {
+            normalizeIndicators(node: IndicatorMetadata) {
                 return {id: node.indicator, label: node.name};
             }
         },

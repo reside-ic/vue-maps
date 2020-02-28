@@ -33,7 +33,7 @@
     import Vue from "vue";
     import TreeSelect from '@riophae/vue-treeselect'
     import {LControl} from 'vue2-leaflet';
-    import {LevelLabel, ChoroplethIndicatorMetadata} from "./types";
+    import {LevelLabel, IndicatorMetadata} from "./types";
 
     interface Data {
         detail: any;
@@ -46,7 +46,7 @@
         indicator: string,
         initialDetail: number,
         showIndicators: boolean,
-        indicatorsMetadata: ChoroplethIndicatorMetadata[],
+        indicatorsMetadata: IndicatorMetadata[],
         levelLabels: LevelLabel[]
     }
 
@@ -92,7 +92,7 @@
                 });
             },
             indicatorOptions: function() {
-                return this.indicatorsMetadata.map((i: ChoroplethIndicatorMetadata) => { return {id: i.indicator, label: i.name}; });
+                return this.indicatorsMetadata.map((i: IndicatorMetadata) => { return {id: i.indicator, label: i.name}; });
             }
         },
         methods: {
