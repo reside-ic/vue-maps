@@ -1,5 +1,5 @@
 import {createLocalVue, shallowMount} from '@vue/test-utils';
-import MapControl from "../../../app/components/plots/MapControl.vue";
+import MapControl from "../src/MapControl.vue";
 import TreeSelect from '@riophae/vue-treeselect';
 
 const localVue = createLocalVue();

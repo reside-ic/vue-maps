@@ -1,28 +1,24 @@
 import {createLocalVue, shallowMount, Wrapper} from "@vue/test-utils";
-import BubblePlot from "../../../../app/components/plots/bubble/BubblePlot.vue";
+import BubblePlot from "../../src/bubble/BubblePlot.vue";
 import {LGeoJson, LCircleMarker, LTooltip} from "vue2-leaflet";
-import {getFeatureIndicators, getRadius} from "../../../../app/components/plots/bubble/utils";
-import {getColor, getIndicatorRanges} from "../../../../app/components/plots/utils";
-import MapControl from "../../../../app/components/plots/MapControl.vue";
-import {NestedFilterOption} from "../../../../app/generated";
-import registerTranslations from "../../../../app/store/translations/registerTranslations";
-import Vuex from "vuex";
+import {getFeatureIndicators, getRadius} from "../../src/bubble/utils";
+import {getColor, getIndicatorRanges} from "../../src/utils";
+import {NestedFilterOption} from "../../src/types";
 import Treeselect from '@riophae/vue-treeselect';
-import {emptyState} from "../../../../app/root";
-import {Vue} from "vue/types/vue";
-import MapLegend from "../../../../app/components/plots/MapLegend.vue";
-import SizeLegend from "../../../../app/components/plots/bubble/SizeLegend.vue";
+import Vue from "vue";
+import MapControl from "../../src/MapControl.vue";
+import MapLegend from "../../src/MapLegend.vue";
+import SizeLegend from "../../src/bubble/SizeLegend.vue";
 import {testData, expectFilter} from "../testHelpers"
 
 const localVue = createLocalVue();
-const store = new Vuex.Store({
-    state: emptyState()
-});
-registerTranslations(store);
 
 const propsData = {
     ...testData,
     selections: {
+        filtersLabel: "Filters",
+        colorIndicatorLabel: "Colour Indicator",
+        sizeIndicatorLabel: "Size Indicator",
         colorIndicatorId: "prevalence",
         sizeIndicatorId: "plhiv",
         detail: 4,
@@ -403,7 +399,7 @@ describe("BubblePlot component", () => {
         expect(wrapper.emitted("update")[0][0].detail).toStrictEqual(3);
     });
 
-    it("updates bounds when becomes initialises", () => {
+    it("updates bounds when becomes initialised",async () => {
         const mockUpdateBounds = jest.fn();
         const wrapper = getWrapper({ //this cannot initialise
             features: [...propsData.features],
@@ -424,6 +420,7 @@ describe("BubblePlot component", () => {
         vm.updateBounds = mockUpdateBounds;
 
         wrapper.setProps(propsData); //This should initialise and trigger the watcher
+        await Vue.nextTick();
         expect(mockUpdateBounds.mock.calls.length).toBeGreaterThan(0);
     });
 

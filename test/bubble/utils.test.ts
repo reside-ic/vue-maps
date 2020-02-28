@@ -1,8 +1,8 @@
 import {
     getFeatureIndicators,
     getRadius
-} from "../../../../app/components/plots/bubble/utils";
-import {getColor} from "../../../../app/components/plots/utils";
+} from "../../src/bubble/utils";
+import {getColor} from "../../src/utils";
 
 describe("Bubble plot utils", () => {
 

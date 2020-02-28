@@ -1,7 +1,7 @@
 import {Wrapper} from "@vue/test-utils";
 import {Vue} from "vue/types/vue";
-import {FilterOption} from "../../../app/generated";;
-import FilterSelect from "../../../app/components/plots/FilterSelect.vue";
+import {FilterOption} from "../src/types";
+import FilterSelect from "../src/FilterSelect.vue";
 
 export const testData = {
     features: [

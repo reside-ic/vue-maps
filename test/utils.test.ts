@@ -4,7 +4,7 @@ import {
     getIndicatorRanges,
     toIndicatorNameLookup,
     roundToContext
-} from "../../../app/components/plots/utils";
+} from "../src/utils";
 import {interpolateMagma, interpolateWarm} from "d3-scale-chromatic";
 
 const indicators = [

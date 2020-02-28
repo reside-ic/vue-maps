@@ -1,5 +1,5 @@
 import {shallowMount, WrapperArray} from '@vue/test-utils';
-import MapLegend from "../../../app/components/plots/MapLegend.vue";
+import MapLegend from "../src/MapLegend.vue";
 import {Vue} from "vue/types/vue";
 
 describe("Map legend component", () => {

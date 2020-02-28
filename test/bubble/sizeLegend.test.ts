@@ -1,6 +1,6 @@
 import {shallowMount} from "@vue/test-utils";
-import SizeLegend from "../../../../app/components/plots/bubble/SizeLegend.vue";
-import {getRadius} from "../../../../app/components/plots/bubble/utils";
+import SizeLegend from "../../src/bubble/SizeLegend.vue";
+import {getRadius} from "../../src//bubble/utils";
 import {LControl} from "vue2-leaflet";
 
 const getWrapper  = () => {
