@@ -1,16 +1,5 @@
 const indicators = [
     {
-        "indicator": "prevalence",
-        "value_column": "mean",
-        "indicator_column": "indicator_id",
-        "indicator_value": "2",
-        "name": "HIV prevalence",
-        "min": 0,
-        "max": 0.5,
-        "colour": "interpolateMagma",
-        "invert_scale": true
-    },
-    {
         "indicator": "population",
         "value_column": "mean",
         "indicator_column": "indicator_id",
@@ -22,37 +11,25 @@ const indicators = [
         "invert_scale": false
     },
     {
-        "indicator": "incidence",
+        "indicator": "prevalence",
         "value_column": "mean",
         "indicator_column": "indicator_id",
-        "indicator_value": "7",
-        "name": "HIV incidence",
-        "min": 0,
-        "max": 0.01,
-        "colour": "interpolateMagma",
-        "invert_scale": true
-    },
-    {
-        "indicator": "new_infections",
-        "value_column": "mean",
-        "indicator_column": "indicator_id",
-        "indicator_value": "8",
-        "name": "New infections",
-        "min": 0,
-        "max": 40000,
-        "colour": "interpolateMagma",
-        "invert_scale": true
-    },
-    {
-        "indicator": "anc_prevalence",
-        "value_column": "mean",
-        "indicator_column": "indicator_id",
-        "indicator_value": "9",
-        "name": "ANC HIV prevalence",
+        "indicator_value": "2",
+        "name": "HIV prevalence",
         "min": 0,
         "max": 0.5,
         "colour": "interpolateMagma",
         "invert_scale": true
+    },
+    {
+        "indicator":"plhiv",
+        "value_column":"mean",
+        "indicator_column":"indicator_id",
+        "indicator_value":"3","name":"PLHIV",
+        "min":0,
+        "max":10000000,
+        "colour":"interpolateMagma",
+        "invert_scale":true
     }
 ];
 
@@ -65,7 +42,7 @@ const featureLevels = [
     {
         "id": 1,
         "area_level_label": "Region",
-        "display": truegit
+        "display": true
     },
     {
         "id": 2,
@@ -535,7 +512,12 @@ const filters = [
 
 const selections = {
     colorIndicatorId: "prevalence",
-    sizeIndicatorId: "population",
+    sizeIndicatorId: "plhiv",
     detail: -1,
-    selectedFilterOptions: {}
+    selectedFilterOptions: {
+        area: [],
+        age: [{id: "15-49", label: "15-49"}],
+        quarter: [{id: "CY2019Q2", label: "June 2019"}],
+        sex: [{id: "both", label: "Both"}]
+    },
 };

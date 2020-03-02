@@ -1,1 +1,47 @@
 @import "../node_modules/@riophae/vue-treeselect/dist/vue-treeselect";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.map-control {
+  border: 1px solid #adb5bd;
+  background: white;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+}
+
+.vue-treeselect__label-container, .vue-treeselect__label-container:hover {
+  .vue-treeselect__checkbox--checked, .vue-treeselect__checkbox--indeterminate {
+    width: auto;
+  }
+}
+
+.vue-treeselect__menu {
+  overflow-x: auto;
+}
+
+.vue-treeselect__control {
+  height: calc(1.5em + 0.75rem + 2px);
+}
+
+.vue-treeselect--disabled .vue-treeselect__single-value{
+  color: $gray-500;
+}
+
+.disabled-label {
+  color: $gray-500;
+}
+
+.geojson {
+  stroke-width: 1;
+  fill-opacity: 1.0;
+  stroke: grey;
+}
+
+.geojson-grey {
+  @extend .geojson;
+  fill: rgb(200,200,200);
+}
