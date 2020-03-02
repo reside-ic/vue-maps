@@ -367,11 +367,12 @@
                 this.changeSelections({colorIndicatorId: colorIndicator});
             }
             if (!this.selections.sizeIndicatorId) {
-                const sizeIndicator = this.indicatorNameLookup.plhiv ? "plhiv" : this.indicators[0].indicator;
+                const sizeIndicator = this.indicatorNameLookup.plhiv ? "population" : this.indicators[0].indicator;
                 this.changeSelections({sizeIndicatorId: sizeIndicator});
             }
 
             if (Object.keys(this.selections.selectedFilterOptions).length < 1) {
+                console.log("initialising filters");
                 const defaultSelected = this.nonAreaFilters.reduce((obj: any, current: Filter) => {
                     obj[current.id] = current.options.length > 0 ? [current.options[0]] : [];
                     return obj;
