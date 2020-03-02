@@ -70,6 +70,10 @@ for visualising data in a geographical context.
   level in this hierarchy to view data for by selecting from the 'Detail' drop-down. It is expected that values for
   all levels in the hierarchy will be provided in the dataset - the component does no aggregation itself. 
   
+  Area is treated as a filter too - if no areas are selected in the Area drop-down, bubbles for all areas will be displayed.
+  The user may also select one or more areas (at any level), to automatically zoom to display bubbles
+  only for the selected areas.
+  
   Metadata provided to the component defines the colour scale to display and expected ranges of the indicator values. 
   as well as the expected data format, and display labels.  
   
@@ -80,7 +84,7 @@ for visualising data in a geographical context.
   For a full example see [examples/bubbleplot.html](examples/bubbleplot.html).
   
   #### Props
-  This component requires the following props
+  This component requires the following props:
   
   #### features
   The features props provides geojson data on the geography to be displayed in the plot.

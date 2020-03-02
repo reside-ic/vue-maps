@@ -4,7 +4,6 @@ export interface BubblePlotLabels {
     filtersLabel: string,
     colorIndicatorLabel: string,
     sizeIndicatorLabel: string,
-    mapIndicatorLabel: string,
     detailLabel: string
 }
 

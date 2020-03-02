@@ -57,7 +57,6 @@
                 <map-control :initialDetail=selections.detail
                              :show-indicators="false"
                              :level-labels="featureLevels"
-                             :indicator-label="labels.mapIndicatorLabel"
                              :detail-label="labels.detailLabel"
                              @detail-changed="onDetailChange"></map-control>
                 <map-legend :metadata="colorIndicator"></map-legend>

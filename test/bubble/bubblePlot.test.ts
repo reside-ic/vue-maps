@@ -19,7 +19,6 @@ const propsData = {
         filtersLabel: "Filters",
         colorIndicatorLabel: "Colour Indicator",
         sizeIndicatorLabel: "Size Indicator",
-        mapIndicatorLabel: "Indicator",
         detailLabel: "Detail"
     },
     selections: {
