@@ -85,7 +85,77 @@ for visualising data in a geographical context.
  
   #### Data - Long and wide format 
   
-  //TODO
+  The dataset is provided to the component in the `chartdata` property. The value provided should be an 
+  array of objects, where each object represents a row in a tabular dataset, with properties whose names match column
+  name and whose values are the cell values. 
+  
+  The component can handle data in both long format and wide format. In long format, each row holds only a single indicator value.
+  with a separate column indicating which indicator the value is for. In wide format, each row holds many indicator values. 
+  
+  In both formats, each row also contains a value identifying the area, and further values
+  corresponding to filter values, e.g. if 'Age' is a filter there will be rows for each age group, for each area. 
+  
+  The component uses the metadata provided in the `indicators` property to know which format applies, and how to apply it. 
+  
+  For example, a row in long format might look like:
+  ```
+    {
+        area_id: "MWI",
+        sex: "female",
+        age_group: "15-49",
+        calendar_quarter:"CY2016Q1",
+        indicator_id: 1,
+        value: 7631061
+    }
+  ```
+  Its corresponding indicator metadata might be:
+  ```
+    {
+        indicator: "population",
+        value_column: "value",
+        indicator_column: "indicator_id",
+        indicator_value: "1",
+        name: "Population",
+        min: 0,
+        max: 20000000,
+        colour: "interpolateViridis",
+        invert_scale: false
+    }
+  ```
+  The component needs to know which indicator this row provides a value for. It uses the `indicator_column` and `indicator_value`
+  properties of the metadata for this. If it finds the value of `indicator_value` in the row's property named with the value
+  in `indicator_column` then this is the indicator for the row, and its value will be found in `value_column`.
+  
+  A row in wide format might look like this:
+  ```
+      {
+          area_id: "MWI",
+          sex: "female",
+          age_group: "15-49",
+          calendar_quarter:"CY2016Q1",
+          population: 7631061,
+          prevalence: 0.012324,
+          plhiv: 89131
+    }
+    ```
+    Its corresponding indicator metadata might be:
+    ```
+      {
+          indicator: "population",
+          value_column: "population",
+          indicator_column: null,
+          indicator_value: null,
+          name: "Population",
+          min: 0,
+          max: 20000000,
+          colour: "interpolateViridis",
+          invert_scale: false
+          }
+    ```
+
+  There is no need for the `indicator_column` and `indicator_value` properties
+  to be populated in the indicator metadata, since there will be no corresponding column in wide data. Instead, 
+  each indicator will be identifiable on each row by its `value_column` alone. 
   
   #### Props
   This component requires the following props:
@@ -102,7 +172,6 @@ for visualising data in a geographical context.
   
   This enables you to choose your own text for the UI, or support multiple languages. 
   
- 
   ####features
   Type: `Feature[]`
   
@@ -134,7 +203,7 @@ for visualising data in a geographical context.
   | colour | string | Name of the colour function for calculating colour values. This should match one of the [d3-scale-chromatic colour schemes](https://github.com/d3/d3-scale-chromatic), e.g. "interpolateMagma". 
   | invert_scale | boolean | If true, the usual scale for the colour function will be inverted i.e. lower values will be assigned colours which would usually be given to higher values, and vice versa.
  
-
+  See above for a full description of long and wide format data. 
   The BubblePlot will make all indicators provided in this property available as both colour indicators and size indicators. 
   
   #### chartdata
