@@ -172,7 +172,7 @@ for visualising data in a geographical context.
   
   This enables you to choose your own text for the UI, or support multiple languages. 
   
-  #####features
+  ##### features 
   Type: `Feature[]`
   
   The features props provides geojson data on the geography to be displayed in the plot. Please see the [geojson](https://geojson.org/) site for
@@ -250,7 +250,7 @@ for visualising data in a geographical context.
   #### Events
   
   `update`: The component emits this event when the `selections` are changed by the user, or when the component selects initial values. 
-  This even provides a single parameter containing a `Partial<BubblePlotSelections>` object, containing only the updated values. 
+  This event provides a single parameter containing a `Partial<BubblePlotSelections>` object, containing only the updated values. 
   
   ## Development
   * To run unit tests with jest: `npm test`
