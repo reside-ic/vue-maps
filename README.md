@@ -37,7 +37,7 @@ for visualising data in a geographical context.
   
   ### Browser
   
-  To use the dynamic form component directly in the browser, 
+  To use the maps library directly in the browser, 
   just include `dist/js/vue-maps.min.js` on the page, after Vue:
   
   ```
@@ -250,7 +250,7 @@ for visualising data in a geographical context.
   #### Events
   
   `update`: The component emits this event when the `selections` are changed by the user, or when the component selects initial values. 
-  This event provides a single parameter containing a `Partial<BubblePlotSelections>` object, containing only the updated values. 
+  This event's payload is a `Partial<BubblePlotSelections>` object, containing only the updated values. 
   
   ## Development
   * To run unit tests with jest: `npm test`
