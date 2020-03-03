@@ -1,5 +1,5 @@
 # vue-maps
-A library of [Vue](https://vuejs.org/) map components for model visualisation and exploration. These use [Leaflet](https://leafletjs.com/) 
+A library of [Vue](https://vuejs.org/) map components for model exploration, using [Leaflet](https://leafletjs.com/) 
 for visualising data in a geographical context. 
 
 ## Installation
@@ -89,7 +89,7 @@ for visualising data in a geographical context.
   array of objects, where each object represents a row in a tabular dataset, with properties whose names match column
   name and whose values are the cell values. 
   
-  The component can handle data in both long format and wide format. In long format, each row holds only a single indicator value.
+  The component can handle data in both long format and wide format. In long format, each row holds only a single indicator value,
   with a separate column indicating which indicator the value is for. In wide format, each row holds many indicator values. 
   
   In both formats, each row also contains a value identifying the area, and further values
@@ -160,7 +160,7 @@ for visualising data in a geographical context.
   #### Props
   This component requires the following props:
   
-  ####labels 
+  #####labels 
   Type: `BubblePlotLabels`, which has these properties:
   
   | Name | Type | Description |
@@ -172,14 +172,14 @@ for visualising data in a geographical context.
   
   This enables you to choose your own text for the UI, or support multiple languages. 
   
-  ####features
+  #####features
   Type: `Feature[]`
   
   The features props provides geojson data on the geography to be displayed in the plot. Please see the [geojson](https://geojson.org/) site for
   a full geojson spec. BubblePlot requires `area_id` to be present in each feature's `properties`. This identifier is
   used for selection and filtering of areas. 
   
-  #### featureLevels
+  #####featureLevels
   Type: `LevelLabel[]` where `LevelLabel` has these properties:
   
   | Name | Type | Description |
@@ -188,7 +188,7 @@ for visualising data in a geographical context.
   | area_level_label | string | Display label for this level e.g. 'District' |
   | display | boolean | Whether to show this level in the Detail drop-down |
   
-  #### indicators
+  #####indicators
   Type: `IndicatorMetadata[]` where `IndicatorMetadata` has these properties:
   
   | Name | Type | Description |
@@ -206,12 +206,12 @@ for visualising data in a geographical context.
   See above for a full description of long and wide format data. 
   The BubblePlot will make all indicators provided in this property available as both colour indicators and size indicators. 
   
-  #### chartdata
+  #####chartdata
   Type: `any[]`
   
   See the above section on data format for details on the expected format of this property. 
           
-  ###filters
+  #####filters
   Type: `Filter[]` where `Filter` has these properties:
   
   | Name | Type | Description |
@@ -230,7 +230,7 @@ for visualising data in a geographical context.
   
   When the user selects a set of values in the filter drop-downs the data shown on the map will be filtered to only include rows match those values. 
   
-  ####selections
+  #####selections
   Type: `BubblePlotSelections`:
   
   | Name | Type | Description |
@@ -242,12 +242,12 @@ for visualising data in a geographical context.
   This property represents the current set of selected filter options, and other options. If these are updated by changing the
   property value, the UI in the component will update. 
           
-  ####areaFilterId
+  #####areaFilterId
   Type: `string`
   
   The id of the `Filter` which contains area values. The BubblePlot treats this filter differently to the others, so needs this property to identify it. 
   
-  #### Events
+  ####Events
   
   `update`: The component emits this event when the `selections` are changed by the user, or when the component selects initial values. 
   This even provides a single parameter containing a `Partial<BubblePlotSelections>` object, containing only the updated values. 
