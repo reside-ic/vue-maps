@@ -1,0 +1,54 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/style.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <title>Vue Bubble plot</title>
+</head>
+<body>
+<div id="app" class="container mt-5">
+    <h1 class="my-5">Vue Bubble plot</h1>
+    <div class="row">
+        <bubble-plot :labels="labels"
+                                :features="features"
+                                :feature-levels="featureLevels"
+                                :indicators="indicators"
+                                :chartdata="chartData"
+                                :filters="filters"
+                                :selections="selections"
+                                area-filter-id="area"
+                                @update="updateSelections"></bubble-plot>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="../dist/js/vue-maps.min.js"></script>
+<script src="./data.js"></script>
+<script src="./features.js"></script>
+<script src="./metadata.js"></script>
+<script>
+    const labels = {
+        filtersLabel: "Filters",
+        colorIndicatorLabel: "Colour Indicator",
+        sizeIndicatorLabel: "Size Indicator",
+        detailLabel: "Detail"
+    };
+
+    new Vue({
+        el: "#app",
+        data: {
+            labels: labels,
+            features: features,
+            featureLevels: featureLevels,
+            indicators: indicators,
+            chartData: data,
+            filters: filters,
+            selections: selections
+        },
+        methods: {
+            updateSelections: function(updated) {
+                this.selections = {...this.selections, ...updated}
+            }
+        }
+    });
+</script>
+</body>
