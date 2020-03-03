@@ -133,7 +133,6 @@ describe("BubblePlot component", () => {
         expect(wrapper.find('h4').text()).toBe("Filters");
 
         const mapControl = wrapper.find(MapControl);
-        expect(mapControl.props().indicatorLabel).toBe("Indicator");
         expect(mapControl.props().detailLabel).toBe("Detail");
     });
 
@@ -363,7 +362,7 @@ describe("BubblePlot component", () => {
 
         expect(wrapper.emitted("update")[0][0]).toStrictEqual({detail: 4});
         expect(wrapper.emitted("update")[1][0]).toStrictEqual({colorIndicatorId: "prevalence"});
-        expect(wrapper.emitted("update")[2][0]).toStrictEqual({sizeIndicatorId: "plhiv"});
+        expect(wrapper.emitted("update")[2][0]).toStrictEqual({sizeIndicatorId: "population"});
         expect(wrapper.emitted("update")[3][0]).toStrictEqual({
             selectedFilterOptions: {
                 age: [{id: "0:15", label: "0-15"}],

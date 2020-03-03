@@ -82,13 +82,106 @@ for visualising data in a geographical context.
   BubblePlot displays two legends, one for size and one for colour.
   
   For a full example see [examples/bubbleplot.html](examples/bubbleplot.html).
+ 
+  #### Data - Long and wide format 
+  
+  //TODO
   
   #### Props
   This component requires the following props:
   
-  #### features
-  The features props provides geojson data on the geography to be displayed in the plot.
+  ####labels 
+  Type: `BubblePlotLabels`, which has these properties:
   
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | filtersLabel | string | Label to display for the header above the filters drop-downs |
+  | colorIndicatorLabel | string | Label for the Colour Indicator drop-down |
+  | sizeIndicatorLabel | string | Label for the Size Indicator drop-down |
+  | detailLabel | string | Label for the Detail drop-down.
+  
+  This enables you to choose your own text for the UI, or support multiple languages. 
+  
+ 
+  ####features
+  Type: `Feature[]`
+  
+  The features props provides geojson data on the geography to be displayed in the plot. Please see the [geojson](https://geojson.org/) site for
+  a full geojson spec. BubblePlot requires `area_id` to be present in each feature's `properties`. This identifier is
+  used for selection and filtering of areas. 
+  
+  #### featureLevels
+  Type: `LevelLabel[]` where `LevelLabel` has these properties:
+  
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | id   | number | Numeric id for a level in the area hierarchy. Lower numbers indicate larger areas, and level 0 is expected to be the lowest level, indicating a country.
+  | area_level_label | string | Display label for this level e.g. 'District' |
+  | display | boolean | Whether to show this level in the Detail drop-down |
+  
+  #### indicators
+  Type: `IndicatorMetadata[]` where `IndicatorMetadata` has these properties:
+  
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | indicator | string | Identifier for this indicator. Does not have to match indicator_value.|
+  | value_column | string | Name of the property in each data row which holds the value of this indicator |
+  | indicator_column | string | In long-format data, the name of the property in each data row which holds the indicator. Should be null for wide data formats. 
+  | indicator_value | string | In long-format data, the value in the indicator-column which identifies a row as belonging to this indicator. 
+  | name | string | Display label for this indicator. This will be shown in the indicator drop-downs. |
+  | min | number | Minimum expected value for this indicator, used to calculate colour scale. The size scale is calculated from the actual values in the data.
+  | max | number | Maximum expected value for this indicator.
+  | colour | string | Name of the colour function for calculating colour values. This should match one of the [d3-scale-chromatic colour schemes](https://github.com/d3/d3-scale-chromatic), e.g. "interpolateMagma". 
+  | invert_scale | boolean | If true, the usual scale for the colour function will be inverted i.e. lower values will be assigned colours which would usually be given to higher values, and vice versa.
+ 
+
+  The BubblePlot will make all indicators provided in this property available as both colour indicators and size indicators. 
+  
+  #### chartdata
+  Type: `any[]`
+  
+  See the above section on data format for details on the expected format of this property. 
+          
+  ###filters
+  Type: `Filter[]` where `Filter` has these properties:
+  
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | id | string | Identifier for this filter. 
+  | label | string | Display label for this filter. Will be shown as the label for this filter's drop-down.
+  | column_id | string | Name of the property in each data row which holds the value relevant to this filter. | 
+  | options | FilterOption[] | The available values for this filter. These will be displayed in the filter drop-down, and should match the actual values in the data. |
+  
+  `FilterOption` has these properties: 
+  
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | id | string | The expected value in the data. |
+  | label | string | Display label for this filter options. This text will be shown in the filter drop-down. |
+  
+  When the user selects a set of values in the filter drop-downs the data shown on the map will be filtered to only include rows match those values. 
+  
+  ####selections
+  Type: `BubblePlotSelections`:
+  
+  | Name | Type | Description |
+  | ---- | ---- | ----------- |
+  | colorIndicatorId | string | Id of the selected indicator for colour |
+  | sizeIndicatorId | string | Id of the selected indicator for size |
+  | selectedFilterOptioins | string | The selected filter options as a dictionary, where each key is the id of a `Filter`, whose value is an array containing its selected `FilterOptions`. |
+  
+  This property represents the current set of selected filter options, and other options. If these are updated by changing the
+  property value, the UI in the component will update. 
+          
+  ####areaFilterId
+  Type: `string`
+  
+  The id of the `Filter` which contains area values. The BubblePlot treats this filter differently to the others, so needs this property to identify it. 
+  
+  #### Events
+  
+  `update`: The component emits this event when the `selections` are changed by the user, or when the component selects initial values. 
+  This even provides a single parameter containing a `Partial<BubblePlotSelections>` object, containing only the updated values. 
   
   ## Development
   * To run unit tests with jest: `npm test`
