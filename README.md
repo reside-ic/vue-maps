@@ -1,4 +1,6 @@
 # vue-maps
+[![Build Status](https://travis-ci.com/reside-ic/vue-maps.svg?branch=master)](https://travis-ci.com/reside-ic/vue-maps)
+
 A library of [Vue](https://vuejs.org/) map components for model exploration, using [Leaflet](https://leafletjs.com/) 
 for visualising data in a geographical context. 
 
