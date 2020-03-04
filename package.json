@@ -1,5 +1,5 @@
 {
-  "name": "vue-maps",
+  "name": "@reside-ic/vue-maps",
   "version": "0.0.1",
   "description": "A library of Vue map components for model visualisation and exploration",
   "main": "dist/js/index.js",
